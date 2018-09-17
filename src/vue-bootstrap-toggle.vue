@@ -1,6 +1,7 @@
 <template>
   <div class="toggle btn {{ size + ' ' + style }}" data-toggle="toggle"
-       :class="{ 'btn-'+ onstyle: checked, 'btn-' + offstyle + ' off': !checked }">
+       :class="{ ['btn-'+ onstyle]: checked, ['btn-' + offstyle + ' off']: !checked }"
+       :style="{ width: width + 'px', height: height + 'px' }">
     <input type="checkbox" data-toggle="toggle" v-model='checked'>
     <div class="toggle-group">
       <label class="btn {{ 'btn-'+ onstyle + ' ' + size + 'toggle-on' }}">
@@ -16,13 +17,26 @@
 
 <script>
 const sizes = new Map([
-    ['mini', btn-xs'],
-    ['small', btn-sm'],
-    ['large', btn-lg'],
+    ['mini', 'btn-xs'],
+    ['small', 'btn-sm'],
+    ['large', 'btn-lg'],
 ])
 
 /* TODO: styles on toggle div, and labels */
 export default {
+    props: {
+        on: {
+            type: String,
+            default: '0n',
+        },
+        off: {
+            type: String,
+            default: 'Off',
+        },
+        ons
+
+    },
+    
     data() {
         return {
             on: 'On',
@@ -35,22 +49,22 @@ export default {
             height: null,
             checked: false,
         }
-    }
+    },
 
     computed: {
         size() {
             return sizes.get(this.size) || ''
         },
-    }
+    },
 
-    methods {
-        toggle(){}
-        on){}
-        off(){}
-        enable(){}
-        disable(){}
-        trigger(){}
-    }
+    methods: {
+        // toggle(){}
+        // on){}
+        // off(){}
+        // enable(){}
+        // disable(){}
+        // trigger(){}
+    },
 }
 </script>
 
